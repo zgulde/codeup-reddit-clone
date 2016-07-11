@@ -11,9 +11,8 @@ class PostsTableSeeder extends Seeder
      */
     public function run()
     {
-        $post = new App\Post();
-        $post->title = 'test post, please ignore';
-        $post->link = 'http://google.com';
-        $post->save();
+        factory(App\Post::class, 50)->create()->each(function ($post) {
+            $post->save();
+        });
     }
 }
