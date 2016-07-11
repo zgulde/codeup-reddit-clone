@@ -15,6 +15,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/test', function () {
-    return 'testing123';
-});
+Route::resource('posts', 'PostsController');
