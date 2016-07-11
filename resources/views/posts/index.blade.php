@@ -10,14 +10,18 @@
             <a href="{{ $post->link }}">
                 {{ $post->title }}
             </a>
-            <div class="pull-right">
-                <a class="btn btn-warning" href="{{ action('PostsController@edit', $post->id) }}">Edit</a>
-                <form style="display:inline" action="{{ action('PostsController@destroy', $post->id) }}" method="POST">
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    <input type="hidden" name="_method" value="DELETE">
-                    <input class="btn btn-danger" type="submit" value="Delete">
-                </form>
-            </div>
+
+            @if(Auth::check())
+                <div class="pull-right">
+                    <a class="btn btn-warning" href="{{ action('PostsController@edit', $post->id) }}">Edit</a>
+                    <form style="display:inline" action="{{ action('PostsController@destroy', $post->id) }}" method="POST">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <input class="btn btn-danger" type="submit" value="Delete">
+                    </form>
+                </div>
+            @endif
+
         </h2>
         <p>
             Posted: {{ $post->created_at->diffForHumans() }} | 
