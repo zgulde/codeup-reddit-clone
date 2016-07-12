@@ -53,6 +53,7 @@ class PostsController extends Controller
         $post = new Post();
         $post->title = $request->title;
         $post->link = $request->link;
+        $post->user_id = \Auth::id();
         $post->save();
 
         return redirect()->action('PostsController@index');
