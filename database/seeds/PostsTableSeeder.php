@@ -11,8 +11,13 @@ class PostsTableSeeder extends Seeder
      */
     public function run()
     {
-        /* factory(App\Post::class, 50)->create()->each(function ($post) { */
-        /*     $post->save(); */
-        /* }); */
+        $userIds = App\User::all()->map(function ($user) {
+            return $user->id;
+        });
+
+        factory(App\Post::class, 50)->create()->each(function ($post) use ($userIds) {
+            $post->user_id = $userIds->random();
+            $post->save();
+        });
     }
 }
