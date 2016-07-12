@@ -25,7 +25,7 @@
         </h2>
         <p>
             Posted: {{ $post->created_at->diffForHumans() }} | 
-            By: $user
+            By: {{ $post->user->name }}
         </p>
     @endforeach
     {!! $posts->links() !!}
