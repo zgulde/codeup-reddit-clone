@@ -11,7 +11,7 @@
                 {{ $post->title }}
             </a>
 
-            @if(Auth::check())
+            @if(Auth::check() && Auth::user()->canEdit($post))
                 <div class="pull-right">
                     <a class="btn btn-warning" href="{{ action('PostsController@edit', $post->id) }}">Edit</a>
                     <form style="display:inline" action="{{ action('PostsController@destroy', $post->id) }}" method="POST">
