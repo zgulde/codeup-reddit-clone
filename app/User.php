@@ -28,4 +28,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Post');
     }
+
+    public function canEdit(Post $post)
+    {
+        return $post->user_id == $this->id;
+    }
 }
