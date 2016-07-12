@@ -8,5 +8,6 @@
         <p><a href="{{ action('PostsController@create') }}">Create a New Post</a> | <a href="{{ action('PostsController@index') }}">View All Posts</a></p>
     @else
         <h1><a href="/auth/login">Login</a> | <a href="/auth/register">Register</a></h1>
+        <p><a href="{{ action('PostsController@index') }}">View All Posts</a></p>
     @endif
 @stop
